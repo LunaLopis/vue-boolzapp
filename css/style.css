@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(180deg, #009688 15%, #D9DBD4 15%);
+}
+
+.height-col {
+    height: 800px;
+}
+.prima-linea {
+    height: 4em;
+}
+img {
+    width: 63px;
+    max-height: 100%;
+}
+.seconda-riga {
+    background-color:  #73dae8;;
+}
+.bell {
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 40px;
+}
+
+.contenitore-chat {
+    background-image: url(../img/img/mine.jpg);
+    height: calc(100vh - 30%);
+}
+.font-size { 
+    font-size: 2rem;
+}
