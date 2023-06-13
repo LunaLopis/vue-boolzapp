@@ -30,7 +30,7 @@ img {
 }
 
 .contenitore-chat {
-    background-image: url(../img/img/mine.jpg);
+    background-image: url(../img/mine.jpg);
     height: calc(100vh - 30%);
 }
 .font-size { 
