@@ -1,4 +1,4 @@
-const {createApp} = Vue;
+const { createApp } = Vue;
 
 createApp({
     data() {
@@ -165,23 +165,32 @@ createApp({
                         }
                     ],
                 }
-                
+
             ],
             activeContact: 0,
-
-            
         }
 
     },
-created() {
- 
-},
+    created() {
 
-methods: {
-    changeContact(index){
-        this.activeContact = index;
-      }, 
-},
+    },
+
+    methods: {
+
+        sortMessages() {
+            return this.contacts[this.activeContact].messages.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateA - dateB;
+            })
+        },
+        changeContact(index) {
+            this.activeContact = index;
+            this.sortMessages();
+            console.log(this.sortMessages)
+        },
+
+    },
 
 
 }).mount('#app');

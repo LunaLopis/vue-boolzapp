@@ -18,8 +18,6 @@
 
 <body>
     <div id="app">
-
-
         <div class="container">
             <div class="row mt-4">
                 <!-- inizio colonna lista chat -->
@@ -101,31 +99,26 @@
                                 <i class="fa-solid fa-ellipsis-vertical" style="color: #9e9e9e;"></i>
                             </div>
                         </div>
-
                         <div class="contenitore-chat">
-                            <!-- contenitore messagio inviato -->
-                            <div v-for="message in contacts[activeContact].messages" :key="message.date "
-                                class="d-flex flex-row justify-content-end mb-2 pt-5"
-                                >
-                                <div v-if="message && message.status === 'sent'">
-                                    <p class="small p-2 me-3 mb-3 rounded-3 bg-success bg-gradient-light">
-                                        {{ message.message }}
-                                    </p>
+                            <div v-for="message in sortMessages()" :key="message.date">
+                                <div class="d-flex flex-row justify-content-end mb-2 pt-5">
+                                    <div v-if="message && message.status === 'sent'">
+                                        <p class="small p-2 me-3 mb-3 rounded-3 bg-success bg-gradient-light">
+                                            {{ message.message }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!-- contenitore messaggio ricevuto -->
-                            <div v-for="message in contacts[activeContact].messages" :key="message.date "
-                                class="d-flex flex-row justify-content-start pt-4"
-                                >
-                                <div v-if="message && message.status === 'received'">
-                                    <p class="small p-2 me-3 mb-3 rounded-3 bg-warning bg-gradient-light">
-                                        {{ message.message }}
-                                    </p>
-                                </div>
-
+                                    <div class="d-flex flex-row justify-content-start pt-4">
+                                        <div v-if="message && message.status === 'received'">
+                                            <p class="small p-2 me-3 mb-3 rounded-3 bg-warning bg-gradient-light">
+                                                {{ message.message }}
+                                            </p>
+                                        </div>
+                                    </div>
+                               
                             </div>
                         </div>
+
 
                         <!-- input per invio messaggio -->
                         <div class="input-chat">
