@@ -168,11 +168,13 @@ createApp({
 
             ],
             activeContact: 0,
+            newMessage:'',
         }
 
     },
     created() {
-
+        const inputElement = document.getElementById('message-input');
+     
     },
 
     methods: {
@@ -184,13 +186,25 @@ createApp({
                 return dateA - dateB;
             })
         },
+
         changeContact(index) {
             this.activeContact = index;
             this.sortMessages();
             console.log(this.sortMessages)
         },
 
+        addMessage() {
+            if (this.newMessage.trim() !== '') {
+                const newMessage = {
+                    date: new Date().toLocaleString(),
+                    message: this.newMessage,
+                    status: 'sent'
+                };
+                this.contacts[this.activeContact].messages.push(newMessage);
+                this.newMessage = '';
+            }
+        },
+    
     },
-
 
 }).mount('#app');

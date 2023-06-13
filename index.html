@@ -103,16 +103,18 @@
                             <div v-for="message in sortMessages()" :key="message.date">
                                 <div class="d-flex flex-row justify-content-end mb-2 pt-5">
                                     <div v-if="message && message.status === 'sent'">
-                                        <p class="small p-2 me-3 mb-3 rounded-3 bg-success bg-gradient-light">
-                                            {{ message.message }}
-                                        </p>
+                                        <div class="small p-2 me-3 mb-3 rounded-3 bg-success bg-gradient-light">
+                                            <h6>{{ message.message}}</h6>
+                                            <p> {{message.date}}</p>                                         
+                                        </div>                                       
                                     </div>
                                 </div>
                                     <div class="d-flex flex-row justify-content-start pt-4">
                                         <div v-if="message && message.status === 'received'">
-                                            <p class="small p-2 me-3 mb-3 rounded-3 bg-warning bg-gradient-light">
-                                                {{ message.message }}
-                                            </p>
+                                            <div class="small p-2 me-3 mb-3 rounded-3 bg-warning bg-gradient-light">
+                                                <h6>{{ message.message }}</h6>
+                                                <p> {{message.date}}</p> 
+                                            </div>
                                         </div>
                                     </div>
                                
@@ -121,16 +123,16 @@
 
 
                         <!-- input per invio messaggio -->
-                        <div class="input-chat">
+                        <div  class="input-chat" >
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text font-size">
+                                    <span class="input-group-text font-size" >
                                         <i class="fa-sharp fa-regular fa-face-smile" style="color: #b6b7b9;"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input id="message-input" type="text" class="form-control" v-model="newMessage" aria-label="Amount (to the nearest dollar)" v-on:keyup.enter="addMessage">
                                 <div class="input-group-append">
-                                    <span class="input-group-text font-size">
+                                    <span class="input-group-text font-size" >
                                         <i class="fa-solid fa-microphone" style="color: #b3b3b3;"></i>
                                     </span>
                                 </div>
