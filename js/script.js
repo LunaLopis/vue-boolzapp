@@ -24,7 +24,9 @@ createApp({
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
+
                     ],
+
                 },
                 {
                     name: 'Fabio',
@@ -168,13 +170,16 @@ createApp({
 
             ],
             activeContact: 0,
-            newMessage:'',
+            newMessage: '',
+            searchInput: '',
+            newAnswer: '',
+
         }
 
     },
     created() {
         const inputElement = document.getElementById('message-input');
-     
+
     },
 
     methods: {
@@ -203,8 +208,22 @@ createApp({
                 this.contacts[this.activeContact].messages.push(newMessage);
                 this.newMessage = '';
             }
+            setTimeout(() => {
+                const newAnswer = {
+                    date: new Date().toLocaleString(),
+                    message: 'funzionaaa',
+                    status: 'received',
+                };
+                this.contacts[this.activeContact].messages.push(newAnswer);
+            }, 1000);
         },
-    
+
+
+        filteredContacts() {
+            this.contacts.map(contact => {
+                contact.visible = contact.name.toLowerCase().includes(this.searchInput.toLowerCase())
+            });
+        }
     },
 
 }).mount('#app');

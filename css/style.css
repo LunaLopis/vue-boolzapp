@@ -12,16 +12,21 @@ body {
 .height-col {
     height: 800px;
 }
+
 .prima-linea {
     height: 4em;
 }
+
 img {
     width: 63px;
     max-height: 100%;
 }
+
 .seconda-riga {
-    background-color:  #73dae8;;
+    background-color: #73dae8;
+    ;
 }
+
 .bell {
     border: 1px solid white;
     border-radius: 50%;
@@ -29,10 +34,20 @@ img {
     font-size: 40px;
 }
 
+.overflow {
+    overflow-y: auto;
+}
+
 .contenitore-chat {
     background-image: url(../img/mine.jpg);
-    height: calc(100vh - 30%);
+    height: calc(100vh - 20%);
+    overflow-y: auto;
 }
-.font-size { 
+
+.font-size {
     font-size: 2rem;
+}
+
+.pointer {
+    cursor: pointer;
 }

@@ -22,19 +22,21 @@
             <div class="row mt-4">
                 <!-- inizio colonna lista chat -->
                 <div class="col-4 g-0">
-                    <!-- prima riga -->
-                    <div class="content bg-light height-col ">
+                    <!-- prima riga  -->
+                    <div class="content bg-light height-col overflow">
                         <div class="prima-linea d-flex justify-content-between bg-light">
                             <div>
                                 <img class="rounded-circle" src="./img/avatar_io.jpg" alt="">
                                 <span>Sofia</span>
                             </div>
+                            <!-- contenitore azzurro delle notifiche  -->
                             <div class="mt-3 pe-3 ">
                                 <i class="fa-solid fa-circle-notch" style="color: #9e9e9e;"></i>
                                 <i class="fa-solid fa-message" style="color: #9e9e9e;"></i>
                                 <i class="fa-solid fa-ellipsis-vertical" style="color: #9e9e9e;"></i>
                             </div>
                         </div>
+                        <!-- barra di ricerca lista contatti -->
                         <div class="seconda-riga d-flex p-2">
                             <div>
                                 <span class="bell"><i class="fa-solid fa-bell-slash" style="color: #73dae8;"></i></span>
@@ -46,18 +48,19 @@
                         </div>
                         <div class="search-row">
                             <div class="input-group">
-                                <span class="input-group-text border-0" id="search-addon">
+                                <span class="input-group-text border-0 pointer" id="search-addon">
                                     <i class="fas fa-search"></i>
                                 </span>
-                                <input type="search" class="form-control" placeholder="cerca o inizia una nuova chat"
-                                    aria-label="Search" aria-describedby="search-addon" />
+                                <input type="search" class="form-control" placeholder="cerca o inizia una nuova chat" name=""
+                                    aria-label="Search" aria-describedby="search-addon" v-model="searchInput" @input="filteredContacts()"/>
                             </div>
                         </div>
                         <!-- inizio lista chat -->
                         <div class="chat-container mt-1 ">
-                            <div v-for="(contact, index) in contacts" :key="contact.name"
-                                class="d-flex bg-light justify-content-between" @click="changeContact(index)">
-                                <div class="d-flex">
+                            <template v-for="(contact, index) in contacts">
+                                <ul  :key="contact.name" v-if="contact.visible"
+                                class="d-flex bg-light justify-content-between " @click="changeContact(index)">
+                                <li class="d-flex ">
                                     <span class="avatar ps-2 pt-1">
                                         <img class="rounded-circle" :src="contact.avatar" alt="">
                                     </span>
@@ -66,11 +69,13 @@
                                         <h6>{{ contact.name }}</h6>
                                         <p class="text-muted">Ultimo messaggio inviato</p>
                                     </div>
-                                </div>
+                                </li>
                                 <div>
                                     <span class="text-muted ">00:00</span>
                                 </div>
-                            </div>
+                            </ul>
+                            </template>
+    
                         </div>
                     </div>
                 </div>
@@ -126,13 +131,13 @@
                         <div  class="input-chat" >
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text font-size" >
+                                    <span class="input-group-text font-size pointer" >
                                         <i class="fa-sharp fa-regular fa-face-smile" style="color: #b6b7b9;"></i>
                                     </span>
                                 </div>
                                 <input id="message-input" type="text" class="form-control" v-model="newMessage" aria-label="Amount (to the nearest dollar)" v-on:keyup.enter="addMessage">
                                 <div class="input-group-append">
-                                    <span class="input-group-text font-size" >
+                                    <span class="input-group-text font-size pointer" >
                                         <i class="fa-solid fa-microphone" style="color: #b3b3b3;"></i>
                                     </span>
                                 </div>
